@@ -18,4 +18,4 @@
 - `!A|(B^C~!(A|B))`
 - `P^(P|(Q^P))`
 
-[!A|(B^C~!(A|B))](./demo.png)
+![!A|(B^C~!(A|B))](./demo.png)
