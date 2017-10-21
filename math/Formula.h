@@ -12,7 +12,7 @@ using std::vector;
 using std::stack;
 using std::map;
 using std::regex;
-using std::regex_replace;
+using std::regex_match;
 using std::to_string;
 
 typedef map<char , int> mapElements; // 命题map
@@ -47,7 +47,7 @@ private:
 	void popStack(int &); // 出栈运算
 	void printElementValue(); // 输出当前命题的真值
 	void prependForm(bool , string &);
-	
+	void checkExpress(); // 入参检测
 
 public:
 	Formula();

@@ -285,7 +285,7 @@ void Formula::prependForm(bool flag , string & str)
 	mapIt mapit = elements.begin();
 	while (mapit != elements.end())
 	{
-		if (mapit->second)
+		if (!(mapit->second ^ flag))
 		{
 			item += mapit->first;
 		}
@@ -325,15 +325,12 @@ void Formula::printElementValue()
 	}
 	cout << endl;
 }
-// 入参检测
-
 
 // operator >>
 std::istream & operator >> (std::istream & is, Formula & formula)
 {
 	cout << "请输入合式公式（命题[A-Z]、运算符[!&|^~]）: " << flush;
 	cin >> formula.express; // TODO: 入参检测
-
 	formula.resolveExpress(); // 解析公式
 	return is;
 }

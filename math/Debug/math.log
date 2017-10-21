@@ -1,3 +1,4 @@
 ﻿  Formula.cpp
+d:\visual studio\workplace\math\math\formula.cpp(288): warning C4805: “^”: 在操作中将类型“int”与类型“bool”混合不安全
   math.vcxproj -> D:\Visual Studio\workplace\math\Debug\math.exe
   math.vcxproj -> D:\Visual Studio\workplace\math\Debug\math.pdb (Partial PDB)
