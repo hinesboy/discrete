@@ -24,9 +24,11 @@ typedef stack<char> stackOperator; // 运算符栈
 
 class Formula
 {
-	static mapElements operatorPRI; // 运算符优先级对照集合
+	static mapElements operatorPRI; // 算符优先级算法对照集合
+	static mapElements operatorPRIByFix;// 逆波兰优先级对照集合
 private:
 	string express; // 合式公式字符串
+	string subfixExpress;// 合式公式后缀表达式
 	intValues value; // 用int类型的bit 计算真值表
 	int elementLength; // 命题实际个数(去重)
 	mapElements elements; // {命题:真值}
@@ -38,21 +40,27 @@ public:
 	string hqForm; // 主和取范式
 
 private:
-	void resolveExpress(); // 解析合式公式
-	void algoValues(); // 计算真值表
+	void resolveExpress(); // 解析合式公式获取命题信息
 	void incValues(); // value自增根据bit位获取命题真值
-	bool algoExpress();// 核心算法
+	void printElementValue(); // cout输出当前命题的真值
+	void prependForm(bool , string &); // 合成析取和取范式字符串
+	void switchAlgo(bool); // 选择使用何种算法运算结果 , true：算符优先级
+
+	// 算符优先级算法
+    bool algoExpress();// 核心算法
 	void pushStack(string::iterator &,string::iterator &,string::iterator & , string::iterator &, int & , bool); // 入栈运算
 	void incIterator(string::iterator &,string::iterator &,string::iterator & , string::iterator & , bool); // 指针自增
 	void popStack(int &); // 出栈运算
-	void printElementValue(); // 输出当前命题的真值
-	void prependForm(bool , string &);
-	void checkExpress(); // 入参检测
+	
+	// 逆波兰算法
+	bool algoExpressByFix(); // 逆波兰命题出栈运算
+	void getSubFixExpress(); // 将合式公式转化为后缀表达式
 
 public:
 	Formula();
 	Formula(string);
-	void algoXHForm(); // 获取和取范式
+	void algoXHForm(); // 算符优先级算法
+	void algoXHFormByFix(); // 逆波兰算法
 	~Formula();
 
 	friend std::ostream & operator << (std::ostream & , Formula &); // 重载输出运算符
